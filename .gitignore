@@ -2,6 +2,10 @@ raw_data/
 out_data/clean/
 out_data/ledger.jsonl
 out_data/debug_*.jsonl
+out_data/*.jsonl
+out_data/manifest.json
+out_data_final/
+out_data.tmp_run/
 __pycache__/
 .venv/
 *.pyc

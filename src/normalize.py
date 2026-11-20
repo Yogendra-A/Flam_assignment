@@ -74,5 +74,5 @@ if __name__ == '__main__':
     ]
     for inp, expected in tests:
         got = normalize(inp)
-        status = '✓' if got == expected else f'✗ got={repr(got)}'
-        print(f'{status} normalize({repr(inp)[:40]})')
+        status = 'PASS' if got == expected else f'FAIL got={repr(got)}'
+        print(f'{status} normalize({ascii(inp)[:40]})')

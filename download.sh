@@ -5,6 +5,7 @@ set -euo pipefail
 
 RAW_DIR="${1:-raw_data}"
 mkdir -p "$RAW_DIR"
+export RAW_DIR
 
 echo "[1/3] Downloading Hindi Wikipedia (first 12 000 records)…"
 python3 - <<'PYEOF'
@@ -40,7 +41,7 @@ with open(out_path, "w", encoding="utf-8") as fh:
 print(f"Saved {count} records to {out_path}")
 PYEOF
 
-echo "[2/3] Downloading WillHeld/hinglish_top…"
+echo "[2/3] Downloading WillHeld/hinglish_top (first 2 500 records)…"
 python3 - <<'PYEOF'
 import os, json
 from datasets import load_dataset
@@ -48,23 +49,27 @@ from datasets import load_dataset
 raw_dir = os.environ.get("RAW_DIR", "raw_data")
 out_path = os.path.join(raw_dir, "hinglish.jsonl")
 
-ds = load_dataset("WillHeld/hinglish_top", split="train", trust_remote_code=False)
+ds = load_dataset("WillHeld/hinglish_top", split="train", streaming=True, trust_remote_code=False)
 
 # Inspect column names dynamically
 cols = ds.column_names
-text_col = "sentence" if "sentence" in cols else "text"
+text_col = "sentence" if "sentence" in cols else ("cs_query" if "cs_query" in cols else "text")
 print(f"  Using column '{text_col}' (available: {cols})")
 
+count = 0
 with open(out_path, "w", encoding="utf-8") as fh:
     for record in ds:
+        if count >= 2500:
+            break
         row = {
             "id":     str(record.get("id", "")),
             "text":   record.get(text_col, ""),
             "source": "hinglish_top",
         }
         fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+        count += 1
 
-print(f"Saved {len(ds)} records to {out_path}")
+print(f"Saved {count} records to {out_path}")
 PYEOF
 
 echo "[3/3] Writing sources.json…"
@@ -83,6 +88,7 @@ sources = [
         "url":           "https://huggingface.co/datasets/wikimedia/wikipedia",
         "license":       "CC BY-SA 4.0",
         "records_used":  12000,
+        "file_size_mb": round(os.path.getsize(os.path.join(raw_dir, "wiki_hi.jsonl")) / 1_000_000, 3),
         "download_date": today,
     },
     {
@@ -90,6 +96,8 @@ sources = [
         "hf_dataset":    "WillHeld/hinglish_top",
         "url":           "https://huggingface.co/datasets/WillHeld/hinglish_top",
         "license":       "MIT",
+        "records_used":  2500,
+        "file_size_mb": round(os.path.getsize(os.path.join(raw_dir, "hinglish.jsonl")) / 1_000_000, 3),
         "download_date": today,
     },
 ]
@@ -100,6 +108,4 @@ with open(out_path, "w", encoding="utf-8") as fh:
 print(f"Provenance written to {out_path}")
 PYEOF
 
-# Export RAW_DIR so the heredoc python3 subprocesses can read it
-export RAW_DIR
 echo "Done. Raw data written to: $RAW_DIR/"
