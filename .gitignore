@@ -1,0 +1,9 @@
+raw_data/
+out_data/clean/
+out_data/ledger.jsonl
+out_data/debug_*.jsonl
+__pycache__/
+.venv/
+*.pyc
+*.pyo
+.DS_Store
