@@ -1,0 +1,66 @@
+{
+  "run_timestamp": "2026-11-20T00:00:00Z",
+  "elapsed_seconds": null,
+  "raw_dir": "raw_data",
+  "out_dir": "out_data_final",
+  "thresholds": {
+    "near_dup": 0.8,
+    "contamination_near_dup": 0.7,
+    "contamination_cross_script": 0.6
+  },
+  "input_files": {
+    "hinglish.jsonl": "f5c327a9eda2be1610af4a9155e4f27c740f5d6baa07e2ea30c797c4bad7ad78",
+    "wiki_hi.jsonl": "258f7dc096ec0bdb6fc73aae3694588dcc5233460135420f868031e11d8f9fea"
+  },
+  "counts": {
+    "total_input": 14496,
+    "malformed": 0,
+    "filtered_quality": 183,
+    "filtered_exact_dup": 0,
+    "filtered_near_dup": 1635,
+    "eval_holdout": 191,
+    "contamination_removed": 640,
+    "kept": 11710,
+    "by_lang": {
+      "hi": 9436,
+      "hi-Latn": 2274,
+      "en": 0,
+      "other": 0
+    },
+    "eval_by_lang": {
+      "hi": 141,
+      "hi-Latn": 50
+    },
+    "final_training_docs": 11710,
+    "eval_docs": 191
+  },
+  "output_hashes": {
+    "clean_data": "69d6efd039093adca8e5718c7703ab7a6854ad1fe790161419b8ea994c61a161",
+    "ledger": "b7007176b10d03c3d7126aca1795cec3ebcd1e444a8f078efebd66d3e4a5c8f1",
+    "eval": "a3b7d3fbae30641a053f0caf6962bc20512ffb553f6754fccc3d4ed27fbb58b2",
+    "contamination": "ae24e44be4fb2b2c1d029e148f5e34a03252b7f56a9c6a5375cec99f6c54c1b1",
+    "sample_1000": "4ed4691e0487c543c8cf428916c8266b951fefea1e74185ea6b7c1a10a491494"
+  },
+  "sources": [
+    {
+      "name": "Hindi Wikipedia",
+      "hf_dataset": "wikimedia/wikipedia",
+      "hf_config": "20231101.hi",
+      "url": "https://huggingface.co/datasets/wikimedia/wikipedia",
+      "license": "CC BY-SA 4.0",
+      "records_used": 12000,
+      "file_size_mb": 75.422,
+      "download_date": "2026-11-20"
+    },
+    {
+      "name": "Hinglish TOP",
+      "hf_dataset": "WillHeld/hinglish_top",
+      "hf_config": "default",
+      "url": "https://huggingface.co/datasets/WillHeld/hinglish_top",
+      "license": "MIT",
+      "records_used": 2496,
+      "file_size_mb": 0.279,
+      "download_date": "2026-11-20"
+    }
+  ]
+}
