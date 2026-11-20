@@ -6,6 +6,7 @@ out_data/*.jsonl
 out_data/manifest.json
 out_data_final/
 out_data.tmp_run/
+out_data_renamed_smoke/
 __pycache__/
 .venv/
 *.pyc

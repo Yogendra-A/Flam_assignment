@@ -1,5 +1,5 @@
 """
-normalize.py — Devanagari-aware Unicode normalization.
+text_normalizer.py — Devanagari-aware Unicode normalization.
 
 Rules:
 - NFC normalization

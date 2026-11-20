@@ -1,5 +1,5 @@
 """
-langid.py — Offline language classifier.
+language_identifier.py — Offline language classifier.
 
 Classes:
   hi      — Devanagari-dominant text (including Devanagari with English words)

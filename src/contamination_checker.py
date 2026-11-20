@@ -1,5 +1,5 @@
 """
-contamination.py — Eval holdout and 4-tier contamination checker.
+contamination_checker.py — Eval holdout and 4-tier contamination checker.
 
 Eval holdout:
   - ~200 items: 150 hi + 50 hi-Latn, determined by hash(id) % N

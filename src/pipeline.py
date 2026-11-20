@@ -31,12 +31,12 @@ from typing import Iterator, Dict, Any, List, Optional
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from normalize import normalize
-from langid import classify as langid_classify
-from filters import apply_filters
-from dedup import DedupState
-from pii import redact as pii_redact
-from contamination import ContaminationChecker, should_holdout
+from text_normalizer import normalize
+from language_identifier import classify as langid_classify
+from quality_filters import apply_filters
+from deduplicator import DedupState
+from pii_redactor import redact as pii_redact
+from contamination_checker import ContaminationChecker, should_holdout
 
 
 def sha256_file(path: Path) -> str:

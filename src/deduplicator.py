@@ -1,5 +1,5 @@
 """
-dedup.py — Exact and near-duplicate detection.
+deduplicator.py — Exact and near-duplicate detection.
 
 Exact dedup: SHA-256 hash of normalized text.
 Near-dup: datasketch MinHashLSH with num_perm=128.

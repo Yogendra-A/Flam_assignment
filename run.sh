@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# run.sh — run the full Hindi NLP pipeline
-# Usage: bash run.sh [raw_dir] [out_dir]
+# run.sh - run the full Hindi NLP pipeline
+# Usage: ./run.sh [raw_dir] [out_dir]
 set -euo pipefail
 
 RAW_DIR="${1:-raw_data}"

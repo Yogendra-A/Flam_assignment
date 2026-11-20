@@ -1,5 +1,5 @@
 """
-filters.py — Quality filters for Hindi NLP pipeline.
+quality_filters.py — Quality filters for Hindi NLP pipeline.
 
 Drops:
   - Garbled encoding (replacement chars, excessive control chars)

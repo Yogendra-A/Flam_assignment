@@ -1,5 +1,5 @@
 """
-pii.py — Indian PII redaction.
+pii_redactor.py — Indian PII redaction.
 
 Redacts:
   - Indian phone numbers → <PHONE>
